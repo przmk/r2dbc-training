@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.justpz</groupId>
+  <artifactId>r2dbc-training</artifactId>
+  <packaging>pom</packaging>
+  <version>0.0.1</version>
+  <modules>
+    <module>simple</module>
+  </modules>
+  <properties>
+    <junit.version>5.5.2</junit.version>
+    <compiler.plugin.version>3.8.1</compiler.plugin.version>
+    <surfire.plugin.version>3.0.0-M3</surfire.plugin.version>
+    <mockito.version>1.10.19</mockito.version>
+    <guava.version>28.1-jre</guava.version>
+    <javadoc.plugin.version>3.1.1</javadoc.plugin.version>
+    <vavr.version>0.10.2</vavr.version>
+    <r2dbc-postgresql.version>0.8.0.RELEASE</r2dbc-postgresql.version>
+  </properties>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.r2dbc</groupId>
+        <artifactId>r2dbc-postgresql</artifactId>
+        <version>${r2dbc-postgresql.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <repositories>
+    <repository>
+      <id>spring-libs-snapshot</id>
+      <name>Spring Snapshot Repository</name>
+      <url>https://repo.spring.io/libs-snapshot</url>
+    </repository>
+  </repositories>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${surfire.plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${compiler.plugin.version}</version>
+        <configuration>
+          <source>11</source>
+          <target>11</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${javadoc.plugin.version}</version>
+        <configuration>
+          <show>private</show>
+          <nohelp>true</nohelp>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
